@@ -1,0 +1,132 @@
+[gd_scene load_steps=8 format=3 uid="uid://cgkphf155f682"]
+
+[ext_resource type="Texture2D" uid="uid://dnwynar2caxmb" path="res://pics/mainbgpic.jpg" id="1_28flt"]
+[ext_resource type="Script" uid="uid://ugx2wfw7fgjk" path="res://Scipts/main_menu.gd" id="1_48xlc"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_48xlc"]
+texture = ExtResource("1_28flt")
+modulate_color = Color(0.370364, 0.370364, 0.370364, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_28flt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_28flt"]
+bg_color = Color(0.381703, 0.381703, 0.381703, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_size = 5
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_48xlc"]
+bg_color = Color(0.0383972, 0.0383972, 0.0383972, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_size = 5
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_erv1k"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_size = 5
+shadow_offset = Vector2(0, 4)
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_48xlc")
+
+[node name="Background" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_48xlc")
+
+[node name="ButtonsContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -261.0
+offset_top = -73.0
+offset_right = 261.0
+offset_bottom = 142.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="Start" type="Button" parent="ButtonsContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_28flt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_28flt")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_48xlc")
+theme_override_styles/normal = SubResource("StyleBoxFlat_erv1k")
+text = "Начать игру"
+
+[node name="Settings" type="Button" parent="ButtonsContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_28flt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_28flt")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_48xlc")
+theme_override_styles/normal = SubResource("StyleBoxFlat_erv1k")
+text = "Настройки"
+
+[node name="Exit" type="Button" parent="ButtonsContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_28flt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_28flt")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_48xlc")
+theme_override_styles/normal = SubResource("StyleBoxFlat_erv1k")
+text = "Выход"
+
+[node name="GameName" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -296.5
+offset_top = 39.0
+offset_right = 296.5
+offset_bottom = 180.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 50
+text = "Еврей-путешественник
+by Артём Пронин"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="ButtonsContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="ButtonsContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="ButtonsContainer/Exit" to="." method="_on_exit_pressed"]
