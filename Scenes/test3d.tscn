@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://btsc34suputwi"]
+
+[ext_resource type="Script" uid="uid://xjxqrpgmic3u" path="res://Scipts/test_3d.gd" id="1_pgqbl"]
+[ext_resource type="PackedScene" uid="uid://8fs7v5bcn1ub" path="res://Scenes/the_box.tscn" id="1_vechd"]
+[ext_resource type="PackedScene" uid="uid://dwjgj37yhf214" path="res://Scenes/die.tscn" id="2_vechd"]
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_pgqbl")
+
+[node name="The Box" parent="." instance=ExtResource("1_vechd")]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
+
+[node name="Die" parent="." instance=ExtResource("2_vechd")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[connection signal="roll_finished" from="Die" to="." method="_on_die_roll_finished"]

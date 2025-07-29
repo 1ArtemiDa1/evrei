@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=3 uid="uid://dwjgj37yhf214"]
+
+[ext_resource type="Script" uid="uid://c0j1ybfny8sd1" path="res://Scipts/die.gd" id="1_cv3b7"]
+[ext_resource type="PackedScene" uid="uid://crbsmrdm1q46b" path="res://dice/uploads_files_3142007_Dice(1).glb" id="2_cv3b7"]
+[ext_resource type="PackedScene" uid="uid://dv1glfgurx3ul" path="res://Scenes/dieraycast.tscn" id="3_231m4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sg6ru"]
+size = Vector3(2, 2, 2)
+
+[node name="Die" type="RigidBody3D"]
+gravity_scale = 2.0
+freeze = true
+script = ExtResource("1_cv3b7")
+
+[node name="texture" parent="." instance=ExtResource("2_cv3b7")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_sg6ru")
+
+[node name="raycasts" type="Node3D" parent="."]
+
+[node name="dieraycast1" parent="raycasts" instance=ExtResource("3_231m4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+target_position = Vector3(0, 0, -0.1)
+opposite_side = 6
+
+[node name="dieraycast2" parent="raycasts" instance=ExtResource("3_231m4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+target_position = Vector3(0.1, 0, 0)
+opposite_side = 5
+
+[node name="dieraycast3" parent="raycasts" instance=ExtResource("3_231m4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+opposite_side = 4
+
+[node name="dieraycast4" parent="raycasts" instance=ExtResource("3_231m4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+target_position = Vector3(0, 0.1, 0)
+opposite_side = 3
+
+[node name="dieraycast5" parent="raycasts" instance=ExtResource("3_231m4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+target_position = Vector3(-0.1, 0, 0)
+opposite_side = 2
+
+[node name="dieraycast6" parent="raycasts" instance=ExtResource("3_231m4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+target_position = Vector3(0, 0, 0.1)
+opposite_side = 1
+
+[connection signal="sleeping_state_changed" from="." to="." method="_on_sleeping_state_changed"]

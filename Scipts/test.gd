@@ -1,6 +1,8 @@
 extends Node2D
 @onready var textbox = $textbox
 
+#На стрелочку вниз можно вызвать текстовое окно с вопросом. Однако, нажатие 
+#кнопку пока ничего не делает.
 func _input(event):
 	if event.is_action_pressed("ui_down"):
 		textbox.showquestion(
@@ -14,6 +16,6 @@ func _input(event):
 	if event.is_action_pressed("ui_accept"):
 		textbox.skip();
 
-func _process(delta):
-	
-	pass;
+#Сюда получается, на какое ребро упал куб.
+func _on_die_roll_finished(val):
+	pass # Replace with function body.

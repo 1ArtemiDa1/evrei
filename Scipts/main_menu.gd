@@ -1,5 +1,5 @@
 extends Control
-
+#главное меню. Пока без настроек.
 
 func _on_start_pressed():
 	get_tree().change_scene_to_file("res://Scenes/test.tscn");
